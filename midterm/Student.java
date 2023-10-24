@@ -31,7 +31,7 @@ class Student {
    public String getSuffix(){
       return suffix;
    }
-   public String fullName(){
+   public String getfullName(){
       return first_name + " " + middle_name + " " + last_name + " " + suffix;
    }
    
@@ -55,7 +55,10 @@ class Student {
     String suffix = input.nextLine();
     info.setSuffix(suffix);
     
-    // Display full name
-    System.out.println("Full Name: " + info.fullName());
+   System.out.println("First Name: " + info.getfirstName());
+   System.out.println("Middle Name: " + info.getmiddleName());
+   System.out.println("Last Name: " + info.getlastName());
+   System.out.println("Suffix:  " + info.getSuffix());
+   System.out.println("Full Name: " + info.getfullName());
  }
 }
