@@ -64,8 +64,6 @@ public class BankAccount {
     public void displayAccountInfo() {
         System.out.println("Account Number: " + accountNumber);
         System.out.println("Account Name: " + accountName);
-        deposit(50000);
-        withdraw(1000);
         System.out.println("Balance: PHP " + balance);
 
         
@@ -73,6 +71,9 @@ public class BankAccount {
 
     public static void main(String[] args) {
       BankAccount in = new BankAccount();
+      in.deposit(50000);
+      in.withdraw(10000);
       in.displayAccountInfo();
+
     }
 }
