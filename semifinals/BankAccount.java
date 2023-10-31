@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class BankAccount {
     private int accountNumber;
     private String accountName;
@@ -47,6 +48,7 @@ public class BankAccount {
         if (amount > 0) {
             balance += amount;
             System.out.println("Deposited PHP " + amount);
+            System.out.print("\n");
         }
     }
 
@@ -55,6 +57,7 @@ public class BankAccount {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
             System.out.println("Amount Withdrawn PHP " + amount);
+            System.out.print("\n");
         } else {
             System.out.println("Invalid amount or insufficient balance.");
         }
@@ -65,15 +68,59 @@ public class BankAccount {
         System.out.println("Account Number: " + accountNumber);
         System.out.println("Account Name: " + accountName);
         System.out.println("Balance: PHP " + balance);
+        
 
         
     }
 
     public static void main(String[] args) {
-      BankAccount in = new BankAccount();
-      in.deposit(50000);
-      in.withdraw(10000);
-      in.displayAccountInfo();
+      Scanner input = new Scanner(System.in);
+      BankAccount account = new BankAccount();
+      
+    while (true) {
+            System.out.print("[1] to deposit\n[2] to withdraw\n[3] to check balance\n[4] to exit\nChoice: ");
+            int choice = input.nextInt();
 
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the amount to deposit PHP: ");
+                    double deposit = input.nextDouble();
+                    account.deposit(deposit);
+                    account.displayAccountInfo();
+                    break;
+
+                case 2:
+                    System.out.print("Enter the amount to withdraw PHP: ");
+                    double withdraw = input.nextDouble();
+                    account.displayAccountInfo();
+                    if (withdraw <= account.getBalance()) {
+                        account.withdraw(withdraw);
+                    } else {
+                        System.out.println("You don't have that amount in your bank account!");
+                    }
+                    break;
+
+                case 3:
+                    account.displayAccountInfo();
+                    break;
+
+                case 4:
+                    System.out.println("EXITING ");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+
+            // Ask the user if they want to perform another transaction
+            System.out.print("Do you want to perform another transaction? (yes/no): ");
+            String continueChoice = input.next().toLowerCase();
+            if (!continueChoice.equals("yes")) {
+                System.out.println("Goodbye!");
+                System.exit(0);
+            }
+        }
     }
 }
